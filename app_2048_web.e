@@ -28,7 +28,7 @@ feature
 
 feature {NONE} -- Execution
 
-	response (req: WSF_REQUEST): WSF_HTML_PAGE_RESPONSE
+	response (req: WSF_REQUEST): JSON_RESPONSE
 			-- Computed response message.
 		do
 			create Result.make

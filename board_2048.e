@@ -142,33 +142,37 @@ feature -- Status report
 			j: INTEGER
 			output: STRING
 		do
-			output := "	<div id = 'board' class='game-container' style='margin-left: 430px;margin-top: -80px;'><div class='grid-container'>"
+			output := "{table: ["
 			from
 				i:= 1
 			until
 				i> rows
 			loop
-				output.append_string ("<div class='grid-row'>")
+				output.append_string ("[")
 				from
 					j:= 1
 				until
 					j>columns
 				loop
-					if elements.item (i, j).value /= 0 then
-						output.append_string ("<div class='grid-cell'><div class='tile-container'><div class='tile tile-" + elements.item (i, j).out  + " tile-position-1-1'><div class='tile-inner'>")
+					if(elements.item (i, j).value /= 0) then
 						output.append_string (elements.item (i, j).out)
-						output.append_string ("</div></div></div></div>")
 					else
-						output.append_string ("<div class='grid-cell'>")
-						output.append_string (elements.item (i, j).out)
-						output.append_string ("</div>")
+						output.append_string ("0")
 					end
 					j:=j+1
+
+					if(j <= columns) then
+						output.append (",")
+					end
 				end
-				output.append_string ("</div>")
+				output.append_string ("]")
 				i:=i+1
+				if(i <= rows) then
+					output.append (",")
+				end
+
 			end
-			output.append_string ("</div></div>")
+			output.append_string ("]}")
 			Result := output
 			ensure then
 				Result.count>0
