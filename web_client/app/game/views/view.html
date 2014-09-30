@@ -1,0 +1,9 @@
+<section data-ng-controller="GamesController" data-ng-init="init()">
+	<div class="table-responsive">
+	    <table class="table table-bordered" data-ng-keypress="keyPress($event)">
+	        <tr data-ng-repeat="row in game.table track by $index">
+	            <td data-ng-repeat="item in row track by $index">{{item}}</td>
+	        </tr>
+	    </table>
+</div>
+</section>

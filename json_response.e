@@ -18,10 +18,6 @@ feature {NONE} -- Initialization
 	make
 		do
 			status_code := 200
-
-			create {ARRAYED_LIST [STRING]} head_lines.make (5)
-			doctype := "<!DOCTYPE html PUBLIC %"-//W3C//DTD XHTML 1.0 Strict//EN%" %"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd%">"
-
 		end
 
 feature -- Status
@@ -30,17 +26,9 @@ feature -- Status
 
 feature -- Header
 
-	--header: HTTP_HEADER
+	header: WSF_HEADER
 
-feature -- Html access
-
-	doctype: STRING
-
-	language: detachable STRING
-
-	title: detachable STRING
-
-	head_lines: LIST [STRING]
+feature -- Json access
 
 	body: detachable STRING
 
@@ -50,61 +38,6 @@ feature -- Element change
 		do
 			status_code := c
 		end
-
-	set_language (s: like language)
-		do
-			language := s
-		end
-
-	set_title (s: like title)
-		do
-			title := s
-		end
-
-	add_meta_name_content (a_name: STRING; a_content: STRING)
-		local
-			s: STRING_8
-		do
-			s := "<meta name=%"" + a_name + "%" content=%"" + a_content + "%" />"
-			head_lines.extend (s)
-		end
-
-	add_meta_http_equiv (a_http_equiv: STRING; a_content: STRING)
-		local
-			s: STRING_8
-		do
-			s := "<meta http-equiv=%"" + a_http_equiv + "%" content=%"" + a_content + "%" />"
-			head_lines.extend (s)
-		end
-
-	add_style (a_href: STRING; a_media: detachable STRING)
-		local
-			s: STRING_8
-		do
-			s := "<link rel=%"stylesheet%" href=%""+ a_href + "%" type=%"text/css%""
-			if a_media /= Void then
-				s.append (" media=%""+ a_media + "%"")
-			end
-			s.append ("/>")
-			head_lines.extend (s)
-		end
-
-	add_javascript_url (a_src: STRING)
-		local
-			s: STRING_8
-		do
-			s := "<script type=%"text/javascript%" src=%"" + a_src + "%"></script>"
-			head_lines.extend (s)
-		end
-
-	add_javascript_content (a_script: STRING)
-		local
-			s: STRING_8
-		do
-			s := "<script type=%"text/javascript%">%N" + a_script + "%N</script>"
-			head_lines.extend (s)
-		end
-
 	set_body (b: like body)
 		do
 			body := b
@@ -118,10 +51,13 @@ feature {WSF_RESPONSE} -- Output
 			s: STRING_8
 		do
 			create s.make (64)
+			create header.make
 			s.append ("")
 			append_html_body_code (s)
 			res.set_status_code (status_code)
-			res.put_header_text ("Content-Type: application/json")
+			header.add_content_type ("application/json")
+			header.add_header_key_value ("Access-Control-Allow-Origin", "*")
+			res.put_header_text (header.string)
 			res.put_string (s)
 		end
 
@@ -129,14 +65,6 @@ feature -- HTML facilities
 
 
 feature {NONE} -- HTML Generation
-
-	append_html_head_code (s: STRING_8)
-		local
-			t: like title
-			lines: like head_lines
-		do
-
-		end
 
 	append_html_body_code (s: STRING_8)
 		local

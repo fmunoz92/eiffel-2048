@@ -1,4 +1,4 @@
 .DS_Store
-web_client/.bower-components
+web_client/bower_components/
 web_client/.bower-cache
 web_client/.bower-registry

@@ -142,7 +142,7 @@ feature -- Status report
 			j: INTEGER
 			output: STRING
 		do
-			output := "{table: ["
+			output := "{%"table%": ["
 			from
 				i:= 1
 			until
