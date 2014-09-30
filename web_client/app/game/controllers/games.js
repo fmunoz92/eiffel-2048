@@ -24,8 +24,8 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
             });
     };
 
-    $scope.move = function($direction) {
-        Games.move($direction)
+    $scope.move = function(direction) {
+        Games.move(direction)
             .success(function(game) {
                 $scope.game = game;
             })
@@ -41,7 +41,6 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
     }
 
     function getDirection(keyCode) {
-        console.log('keyCode',keyCode)
         var result;
 
         switch(keyCode) {
@@ -60,7 +59,7 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
             default:
                 result = null;
         }
-        console.log(result);
+
         return result;
     }
 }]);
