@@ -1,9 +1,28 @@
 <section data-ng-controller="GamesController" data-ng-init="init()">
-	<div class="table-responsive">
-	    <table class="table table-bordered">
-	        <tr data-ng-repeat="row in game.table track by $index">
-	            <td data-ng-repeat="item in row track by $index">{{item}}</td>
-	        </tr>
-	    </table>
-</div>
+
+	<div class="app-notice" data-ng-show="notice">
+      <span class="notice-close-button" data-ng-click="closeNotice()">x</span>
+      <p>{{notice}}</p>
+    </div>
+
+	<div class="game-container">
+	    <div class="grid-container">
+
+	        <div class="grid-row" data-ng-repeat="row in game.table track by $index">
+	            <div class="grid-cell" data-ng-repeat="item in row track by $index">
+	            	
+	            	<div class="tile-container" data-ng-show="item">
+	            		<div class="tile tile-{{$index}}">
+	            			<div class="tile-inner">
+	            				{{item}}
+	            			</div>
+	            		</div>
+            		</div>
+
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+
 </section>

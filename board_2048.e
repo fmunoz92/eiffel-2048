@@ -142,7 +142,7 @@ feature -- Status report
 			j: INTEGER
 			output: STRING
 		do
-			output := "{%"table%": ["
+			output := "["
 			from
 				i:= 1
 			until
@@ -172,7 +172,7 @@ feature -- Status report
 				end
 
 			end
-			output.append_string ("]}")
+			output.append_string ("]")
 			Result := output
 			ensure then
 				Result.count>0

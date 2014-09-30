@@ -36,7 +36,7 @@ feature {NONE} -- Execution
 			if not is_attached then
 				is_attached := true
 				create controller.make
-				Result.set_body (controller.board.out)
+				Result.set_body ("{%"table%":" + controller.board.out + "}")
 			else
 
 				if attached req.string_item ("q") as command then
@@ -62,12 +62,12 @@ feature {NONE} -- Execution
 					end
 
 					if controller.board.is_winning_board then
-						Result.set_body ("{status: 'win'}")
+						Result.set_body ("{%"status%": %"won%", %"table%":" + controller.board.out + "}")
 					else
 						if not controller.board.can_move_up and not controller.board.can_move_down and not controller.board.can_move_left and not controller.board.can_move_right then
-							Result.set_body ("{status: 'lose'}")
+							Result.set_body ("{%"status%": %"lost%", %"table%":" + controller.board.out + "}")
 						else
-							Result.set_body (controller.board.out)
+							Result.set_body ("{%"table%":" + controller.board.out + "}")
 						end
 					end
 				end

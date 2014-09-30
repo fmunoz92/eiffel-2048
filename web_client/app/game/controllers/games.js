@@ -7,7 +7,7 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
 
         $doc.on('keydown', $scope.keyPress);
 
-        $scope.$on('$destroy',function(){
+        $scope.$on('$destroy', function() {
             $doc.off('keydown', $scope.keyPress);
         });
 
@@ -20,7 +20,8 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
                 $scope.game = game;
             })
             .error(function(err) {
-                console.log('Error: ', err);
+                console.log(err);
+                $scope.addNotice("Error" + err);
             });
     };
 
@@ -28,9 +29,17 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
         Games.move(direction)
             .success(function(game) {
                 $scope.game = game;
+
+                if(game.status == 'lost') {
+                    $scope.addNotice("Sorry, you lost!");
+                }
+                if(game.status == 'won') {
+                    $scope.addNotice("Congrats, you won!");
+                }
             })
-            .error(function(err){
-                console.log('Error: ', err);
+            .error(function(err) {
+                console.log(err);
+                $scope.addNotice("Error" + err);
             });
     };
 
@@ -38,7 +47,7 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
         var direction = getDirection(keyEvent.which);
         if(direction != null)
             $scope.move(direction);
-    }
+    };
 
     function getDirection(keyCode) {
         var result;
@@ -62,4 +71,13 @@ angular.module('eiffel-2048.game').controller('GamesController', ['$scope', '$st
 
         return result;
     }
+
+    $scope.addNotice = function(msg) {
+        $scope.notice = msg;
+    };
+
+    $scope.closeNotice = function() {
+        $scope.notice = null;
+    };
+
 }]);
