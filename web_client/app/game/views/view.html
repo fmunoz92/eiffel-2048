@@ -9,16 +9,8 @@
 	    <div class="grid-container">
 
 	        <div class="grid-row" data-ng-repeat="row in game.table track by $index">
-	            <div class="grid-cell" data-ng-repeat="item in row track by $index">
-	            	
-	            	<div class="tile-container" data-ng-show="item">
-	            		<div class="tile tile-{{$index}}">
-	            			<div class="tile-inner">
-	            				{{item}}
-	            			</div>
-	            		</div>
-            		</div>
-
+	            <div class="grid-cell" data-ng-repeat="item in row track by $index">            	
+					<chemical-element value="item" index="$index" data-ng-model="item"/>
 	            </div>
 	        </div>
 

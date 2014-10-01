@@ -66,7 +66,7 @@ feature {NONE} -- Execution
 					else
 						if not controller.board.can_move_up and not controller.board.can_move_down and not controller.board.can_move_left and not controller.board.can_move_right then
 							Result.set_body ("{%"status%": %"lost%", %"table%":" + controller.board.out + "}")
-						else
+						else			
 							Result.set_body ("{%"table%":" + controller.board.out + "}")
 						end
 					end
