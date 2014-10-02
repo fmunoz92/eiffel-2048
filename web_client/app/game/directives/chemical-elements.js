@@ -29,7 +29,7 @@ angular.module('eiffel-2048.game')
 	         		512: "F",
 	         		1024: "NE",
 	         		2048: "NA",
-	         		5096: "MG"
+	         		4096: "MG"
 	         	};
 
 	         	function getValue(number) {
