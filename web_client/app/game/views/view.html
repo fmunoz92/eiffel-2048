@@ -1,0 +1,20 @@
+<section data-ng-controller="GamesController" data-ng-init="init()">
+
+	<div class="app-notice" data-ng-show="notice">
+      <span class="notice-close-button" data-ng-click="closeNotice()">x</span>
+      <p>{{notice}}</p>
+    </div>
+
+	<div class="game-container">
+	    <div class="grid-container">
+
+	        <div class="grid-row" data-ng-repeat="row in game.table track by $index">
+	            <div class="grid-cell" data-ng-repeat="item in row track by $index">            	
+					<chemical-element value="item" index="$index" data-ng-model="item"/>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+
+</section>

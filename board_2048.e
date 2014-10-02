@@ -142,26 +142,37 @@ feature -- Status report
 			j: INTEGER
 			output: STRING
 		do
-
+			output := "["
 			from
 				i:= 1
-				output:=""
 			until
 				i> rows
 			loop
+				output.append_string ("[")
 				from
 					j:= 1
 				until
 					j>columns
 				loop
-					output.append_string ("|")
-					output.append_string (elements.item (i, j).out)
+					if(elements.item (i, j).value /= 0) then
+						output.append_string (elements.item (i, j).out)
+					else
+						output.append_string ("0")
+					end
 					j:=j+1
+
+					if(j <= columns) then
+						output.append (",")
+					end
 				end
-					output.append_string ("|")
-					output.append_string("%N")
-					i:=i+1
+				output.append_string ("]")
+				i:=i+1
+				if(i <= rows) then
+					output.append (",")
+				end
+
 			end
+			output.append_string ("]")
 			Result := output
 			ensure then
 				Result.count>0
