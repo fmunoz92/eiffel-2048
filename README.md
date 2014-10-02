@@ -23,7 +23,7 @@ Technologies Involved
 ---------------------
   - EiffelStudio
   - GitHub
-  - AngularJS (soon)
+  - AngularJS
   
 Repository Content
 ------------------
