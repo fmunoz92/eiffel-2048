@@ -56,6 +56,12 @@ Using EiffelStudio
   - Select the file "eiffel-2048.ecf" (In Action select Compile) and press Open button.
   - When finish the compile process you can run the program using the run button in EiffelStudio (or using the file in the folder EIFGENs\eiffel-2048\W_code).
 
+Using web client(development enviroment)
+------------------------------------------
+  - run server  with host localhost and port 9999 via EiffelStudio
+  - move to web_client folder and run python -m SimpleHTTPServer 3000 or if you have python 3 python -m http.server 3000
+  - open your browser http://localhost:3000
+
 Playing
 =======
 
