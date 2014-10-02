@@ -32,15 +32,9 @@ Repository Content
   - Binaries
   - Wiki
 
-Road Map
+Issue tracker
 =======
-
-The core of the game is already implemented. The game is playable right now through the binaries provided in the [alpha release] [alpha-release].
-The functionalities currently missing or being implemented are:
-
-1. User management with saved games.
-2. Client-Server architecture.
-3. Web interface.
+[Trello]
 
   
 Guide
@@ -78,3 +72,4 @@ Playing
 [Design-by-contract]: http://en.wikipedia.org/wiki/Design_by_contract
 [TDD]: http://en.wikipedia.org/wiki/Test-driven_development
 [BDD]: http://en.wikipedia.org/wiki/Behavior-driven_development
+[Trello]: https://trello.com/b/7gjYV0ou/eiffel-2048
