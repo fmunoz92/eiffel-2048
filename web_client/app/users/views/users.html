@@ -1,0 +1,21 @@
+<section data-ng-controller="UsersController" data-ng-init="init()">
+
+
+{{successfulLogin}}
+	<form role="form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="name" class="form-control" id="exampleInputName1" data-ng-model="name" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" data-ng-model="password" placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-default" data-ng-click="login()" >Submit</button>
+</form>
+
+
+
+
+</section>
